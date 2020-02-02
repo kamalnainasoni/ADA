@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+int binarysearch(int a[],int item,int f,int l)
+{
+	int m=(f+l)/2;
+	if(item==a[m])
+	return m;
+	if(f>1)
+	return -1;
+	if(a[m]>item)
+	binarysearch(a,item,f,m-1);
+	if(item>a[m])
+	binarysearch(a,item,m+1,l);
+}
+int main()
+{
+	int a[100],n,i,item;
+	cout<<"enter array size"<<endl;
+	cin>>n;
+	cout<<"enter elements"<<endl;
+	for(i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	cout<<"enter number to search"<<endl;
+	cin>>item;
+	int r=binarysearch(a,item,0,n-1);
+	if(r>1)
+	cout<<"found at"<<r;
+	if(r==-1)
+	cout<<"not found";
+	return 0;
+}
